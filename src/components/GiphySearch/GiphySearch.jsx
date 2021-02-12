@@ -14,11 +14,10 @@ const GipshySearch = () => {
 	const [inputValue, setInputValue] = useState('')
 	const [inputError, setInputError] = useState(false)
 	const [errorMessage, SetErrorMessage] = useState('')
-
+	const [searchQuery, setSearchQuery] = useState('space')
 	const [showGipfyFromNumber, setShowGiphyFromNumber] = useState(1)
 
 	const loadNumberOfNewResults = 12
-	const [searchQuery, setSearchQuery] = useState('')
 
 	const classes = useStyles()
 
@@ -69,6 +68,7 @@ const GipshySearch = () => {
 
 	const ConditionalTextField = inputError ? (
 		<TextField
+			data-testid="error"
 			error
 			id="standard-error-helper-text"
 			helperText={errorMessage}
@@ -95,6 +95,7 @@ const GipshySearch = () => {
 	) : (
 		<TextField
 			id="standard-basic"
+			data-testid="no-error"
 			label="Search"
 			variant="outlined"
 			onChange={handleInput}
@@ -176,7 +177,6 @@ const useStyles = makeStyles(theme => ({
 		padding: '0 1rem',
 		display: 'flex',
 		justifyContent: 'center',
-		marginBottom: '2rem',
 		backgroundColor: '#fff'
 	},
 	formContainer: {
