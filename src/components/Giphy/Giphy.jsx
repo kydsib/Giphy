@@ -28,7 +28,6 @@ const Giphy = ({ id, giphySrc, giphyDescription, refToGiphy }) => {
 			key={id}
 		>
 			<img
-				data-testid="image"
 				className={classes.image}
 				src={giphySrc}
 				alt={giphyDescription}
@@ -40,7 +39,7 @@ const Giphy = ({ id, giphySrc, giphyDescription, refToGiphy }) => {
 						onClick={toggleDialogOpen}
 						color="primary"
 						autoFocus
-						data-testid="pop-up"
+						
 					>
 						Close
 					</Button>

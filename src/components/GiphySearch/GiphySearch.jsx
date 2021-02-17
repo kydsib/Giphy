@@ -90,7 +90,7 @@ const GipshySearch = () => {
 					</InputAdornment>
 				)
 			}}
-			fullWidth="true"
+			fullWidth={true}
 		/>
 	) : (
 		<TextField
@@ -107,14 +107,14 @@ const GipshySearch = () => {
 							disabled={inputError}
 							type="submit"
 							variant="contained"
-							color="#f9f9f9"
+							color="inherit"
 						>
 							<Search />
 						</Button>
 					</InputAdornment>
 				)
 			}}
-			fullWidth="true"
+			fullWidth={true}
 		/>
 	)
 
@@ -130,12 +130,12 @@ const GipshySearch = () => {
 			</div>
 
 			{error ? (
-				<Alert className={classes.error} severity="warning">
+				<Alert className={classes.error} data-testid="alert" severity="warning">
 					Something went wrong, check your internet connection or try
 					latter.
 				</Alert>
 			) : null}
-			<Grid container spacing={3}>
+			<Grid  container spacing={3}>
 				{giphies.map((giphy, index) => {
 					if (giphies.length === index + 1) {
 						return (
@@ -151,7 +151,7 @@ const GipshySearch = () => {
 							<Giphy
 								id={giphy.id}
 								giphySrc={giphy.images.downsized.url}
-								giphyDescriptio={giphy.title}
+								giphyDescription={giphy.title}
 							/>
 						)
 					}
@@ -159,7 +159,6 @@ const GipshySearch = () => {
 				{isLoading ? <Loader /> : null}
 			</Grid>
 
-			<div>{error && 'Error'}</div>
 			{nothingFound ? (
 				<Alert severity="info">
 					We couldn't find anything, try again!

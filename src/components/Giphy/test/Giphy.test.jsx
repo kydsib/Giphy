@@ -18,7 +18,7 @@ describe('<Giphy />', () => {
 	it('renders correctly', () => {
 		render(<Giphy {...props} />)
 
-		expect(screen.getByTestId('image')).toBeInTheDocument()
+		expect(screen.getByRole('img', {name: /testing/i})).toBeInTheDocument()
 	})
 
 	it('pop up appears on clicking image', () => {
@@ -27,7 +27,7 @@ describe('<Giphy />', () => {
 		userEvent.click(screen.getByTestId('container'))
 		expect(screen.getByTestId('opened-image')).toBeTruthy()
 
-		userEvent.click(screen.getByTestId('pop-up'))
-		expect(screen.getByTestId('image')).toBeInTheDocument()
+		userEvent.click(screen.getByRole('button', {name: /close/i}))
+		expect(screen.getByRole('img', {name: /testing/i})).toBeInTheDocument()
 	})
 })
